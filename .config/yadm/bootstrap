@@ -1,0 +1,32 @@
+#!/bin/bash
+
+system_type=$(uname -s)
+if ! [[ "$system_type" = "Linux" ]]; then
+    echo "This script only runs on Linux!"
+    exit 1
+fi
+
+echo "Installing packages..."
+echo
+pkgs=(zsh curl git yadm yadm tmux firefox)
+
+# apt
+if command -v apt-get >/dev/null 2>&1; then
+    sudo apt update
+    sudo apt upgrade
+    sudo apt-get -y --ignore-missing install "${pkgs[@]}"
+# pacman
+elif command -v pacman >/dev/null 2>&1; then
+    sudo pacman -Syyuu
+    sudo pacman -S --noconfirm --needed "${pkgs[@]}"
+fi
+
+echo "Installing Oh My Zsh and powerlevel10k..."
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+echo "Installing nvm..."
+sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
