@@ -1,0 +1,12 @@
+[user]
+	name = khanghy1000
+	email = 46063255+khanghy1000@users.noreply.github.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = false
+[core]
+	eol = lf
+	autocrlf = false
