@@ -2,6 +2,7 @@
 
 RED="\e[31m"
 GREEN="\e[32m"
+YELLOW="\e[33m"
 ENDCOLOR="\e[0m"
 
 system_type=$(uname -s)
@@ -15,6 +16,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+echo
 echo -e "${GREEN}Installing packages...${ENDCOLOR}"
 echo
 pkgs=(zsh curl git yadm yadm tmux firefox)
@@ -30,11 +32,12 @@ elif command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
-echo -e "${RED}Installing Oh My Zsh and powerlevel10k...${ENDCOLOR}"
-
+echo
+echo -e "${GREEN}Installing Oh My Zsh and powerlevel10k...${ENDCOLOR}"
+echo
 ZSH_PATH=$(which zsh)
 if [[ $ZSH_PATH =~ "sbin" ]]; then
-    echo -e "${RED}Warning:${ENDCOLOR} zsh path includes 'sbin'. Replacing 'sbin' with 'bin'..."
+    echo -e "${YELLOW}Warning:${ENDCOLOR} zsh path includes 'sbin'. Replacing 'sbin' with 'bin'..."
     ZSH_PATH="${ZSH_PATH//sbin/bin}"
 fi
 
@@ -44,5 +47,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+echo
 echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
+echo
 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
