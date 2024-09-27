@@ -6,8 +6,13 @@ ENDCOLOR="\e[0m"
 
 system_type=$(uname -s)
 if ! [[ "$system_type" = "Linux" ]]; then
-    echo -e "${RED}This script only runs on Linux!${ENDCOLOR}"
+    echo -e "${RED}This script only runs on Linux!${ENDCOLOR}" 1>&2
     exit 1
+fi
+
+if [[ $EUID -ne 0 ]]; then
+   echo "${RED}This script must be run as root.${ENDCOLOR} Use sudo "$0" instead" 1>&2
+   exit 1
 fi
 
 echo -e "${GREEN}Installing packages...${ENDCOLOR}"
