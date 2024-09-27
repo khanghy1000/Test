@@ -70,11 +70,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
+plugins=(
+	git
 	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
+
+source ~/.config/zsh-custom/config
 
 # User configuration
 
@@ -106,12 +109,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-source ~/.zsh_profile
-
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias venv="source ./.venv/Scripts/activate"
-alias yadmauto="yadm add -u && yadm commit -m 'Auto commit' && yadm push"

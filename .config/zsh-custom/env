@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# Custom functions
+addToPath() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+# Custom environment variables
+export REPO=$HOME/repos
+
+# Custom paths
+addToPathFront $HOME/.local/scripts
