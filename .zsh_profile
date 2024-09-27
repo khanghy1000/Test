@@ -1,0 +1,20 @@
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+	export PATH=$1:$PATH
+    fi
+}
+
+fzfRepo() {
+
+    selected=$(find ~/repos -mindepth 1 -maxdepth 1 -type d | fzf)
+    
+    if [[ -z $selected ]]; then
+        exit 0
+    fi
+    
+    cd "$selected"
+}
+
+addToPathFront $HOME/.local/bin/scripts
+
+bindkey -s '^f' "^Qtmux-sessionizer\n"
