@@ -13,11 +13,11 @@ pkgs=(zsh curl git yadm yadm tmux firefox)
 # apt
 if command -v apt-get >/dev/null 2>&1; then
     sudo apt update
-    sudo apt upgrade
+    sudo apt upgrade -y
     sudo apt-get -y --ignore-missing install "${pkgs[@]}"
 # pacman
 elif command -v pacman >/dev/null 2>&1; then
-    sudo pacman -Syyuu
+    sudo pacman -Syyuu --noconfirm
     sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
