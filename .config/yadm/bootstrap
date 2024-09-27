@@ -1,12 +1,16 @@
 #!/bin/bash
 
+RED="\e[31m"
+GREEN="\e[32m"
+ENDCOLOR="\e[0m"
+
 system_type=$(uname -s)
 if ! [[ "$system_type" = "Linux" ]]; then
-    echo "This script only runs on Linux!"
+    echo -e "${RED}This script only runs on Linux!${ENDCOLOR}"
     exit 1
 fi
 
-echo "Installing packages..."
+echo -e "${GREEN}Installing packages...${ENDCOLOR}"
 echo
 pkgs=(zsh curl git yadm yadm tmux firefox)
 
@@ -21,12 +25,19 @@ elif command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
-echo "Installing Oh My Zsh and powerlevel10k..."
-chsh -s $(which zsh)
+echo -e "${RED}Installing Oh My Zsh and powerlevel10k...${ENDCOLOR}"
+
+ZSH_PATH=$(which zsh)
+if [[ $ZSH_PATH =~ "sbin" ]]; then
+    echo -e "${RED}Warning:${ENDCOLOR} zsh path includes 'sbin'. Replacing 'sbin' with 'bin'..."
+    ZSH_PATH="${ZSH_PATH//sbin/bin}"
+fi
+
+chsh -s $ZSH_PATH
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-echo "Installing nvm..."
+echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
