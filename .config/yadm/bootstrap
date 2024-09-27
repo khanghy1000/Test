@@ -21,7 +21,7 @@ if command -v apt-get >/dev/null 2>&1; then
     sudo apt-get -y --ignore-missing install "${pkgs[@]}"
 # pacman
 elif command -v pacman >/dev/null 2>&1; then
-    sudo pacman -Syyuu --noconfirm
+    sudo pacman -Syu --noconfirm
     sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
