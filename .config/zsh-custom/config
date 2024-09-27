@@ -2,6 +2,7 @@ ZSH_CONFIG=$HOME/.config/zsh-custom
 source $ZSH_CONFIG/env
 source $ZSH_CONFIG/alias
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 bindkey -s '^f' "^Qtmux-sessionizer\n"
 
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
