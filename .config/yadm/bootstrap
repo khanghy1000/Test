@@ -19,12 +19,12 @@ fi
 echo
 echo -e "${GREEN}Installing packages...${ENDCOLOR}"
 echo
-pkgs=(zsh curl git yadm yadm tmux firefox)
+pkgs=(zsh curl git make unzip gcc ripgrep tmux firefox)
 
 # apt
 if command -v apt-get >/dev/null 2>&1; then
-    sudo apt update
-    sudo apt upgrade -y
+    sudo apt-get update
+    sudo apt-get upgrade -y
     sudo apt-get -y --ignore-missing install "${pkgs[@]}"
 # pacman
 elif command -v pacman >/dev/null 2>&1; then
