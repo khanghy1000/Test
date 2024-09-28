@@ -42,9 +42,10 @@ echo
 echo -e "${GREEN}Installing Oh My Zsh and Powerlevel10k...${ENDCOLOR}"
 echo
 ZSH_PATH=$(which zsh)
+
 if [[ $ZSH_PATH =~ "sbin" ]]; then
-    echo -e "${YELLOW}Warning:${ENDCOLOR} zsh path includes 'sbin'. Replacing 'sbin' with 'bin'..."
     ZSH_PATH="${ZSH_PATH//sbin/bin}"
+    echo -e "${YELLOW}warning:${ENDCOLOR} zsh path includes 'sbin'. Trying to change shell to $ZSH_PATH..."
 fi
 
 chsh -s $ZSH_PATH
