@@ -11,6 +11,15 @@ if ! [[ "$system_type" = "Linux" ]]; then
     exit 1
 fi
 
+# Note: if the script is run as root, all commands will be run as root
+# use sudo -u "$SUDO_USER" command if you need to run a command as the user who invoked sudo
+# example: sudo -u "$SUDO_USER" makepkg -si
+
+if [[ $EUID -ne 0 ]]; then
+   echo -e "${RED}This script must be run as root!${ENDCOLOR}" 1>&2
+   exit 1
+fi
+
 echo
 echo -e "${GREEN}Installing packages...${ENDCOLOR}"
 echo
@@ -29,9 +38,9 @@ elif command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 
     echo -e "${GREEN}Installing yay...${ENDCOLOR}"
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
+    sudo -u "$SUDO_USER" git clone https://aur.archlinux.org/yay.git
+    sudo -u "$SUDO_USER" cd yay
+    sudo -u "$SUDO_USER" makepkg -si
 fi
 
 echo
@@ -45,14 +54,16 @@ if [[ $ZSH_PATH =~ "sbin" ]]; then
     echo -e "${YELLOW}warning:${ENDCOLOR} zsh path includes 'sbin'. Trying to change shell to $ZSH_PATH..."
 fi
 
-chsh -s $ZSH_PATH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sudo -u "$SUDO_USER" chsh -s $ZSH_PATH
+sudo -u "$SUDO_USER" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+sudo -u "$SUDO_USER" git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
+sudo -u "$SUDO_USER" git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo
 echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
 echo
 
-PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
+PROFILE=/dev/null 
+
+sudo -u "$SUDO_USER" sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
