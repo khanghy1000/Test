@@ -15,6 +15,7 @@ addToPathFront() {
 
 # Custom environment variables
 export REPO=$HOME/repos
+export GIT_EDITOR=nvim
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Custom paths
