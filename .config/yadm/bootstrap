@@ -24,7 +24,7 @@ echo
 echo -e "${GREEN}Installing packages...${ENDCOLOR}"
 echo
 
-pkgs=(zsh curl git make unzip gcc ripgrep tmux openssh openssh-client openssh-server base-devel neovim firefox)
+pkgs=(zsh curl git make zip unzip gcc ripgrep base-devel tmux openssh openssh-client openssh-server tree neovim firefox)
 
 # apt
 if command -v apt-get >/dev/null 2>&1; then
@@ -65,5 +65,4 @@ echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
 echo
 
 PROFILE=/dev/null 
-
 sudo -u "$SUDO_USER" sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
