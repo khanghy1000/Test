@@ -7,7 +7,7 @@ ENDCOLOR="\e[0m"
 
 system_type=$(uname -s)
 if ! [[ "$system_type" = "Linux" ]]; then
-    echo -e "${RED}This script only runs on Linux!${ENDCOLOR}" 1>&2
+    echo -e "${RED}This script must be run on Linux!${ENDCOLOR}" 1>&2
     exit 1
 fi
 
