@@ -37,12 +37,17 @@ elif command -v pacman >/dev/null 2>&1; then
 fi
 
 echo
+echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
+echo
+PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
+
+echo
 echo -e "${GREEN}Installing starship...${ENDCOLOR}"
 echo
 curl -sS https://starship.rs/install.sh | sh
 
 echo
-echo -e "${GREEN}Installing Oh My Zsh and Powerlevel10k...${ENDCOLOR}"
+echo -e "${GREEN}Installing zinit and zsh plugins...${ENDCOLOR}"
 echo
 
 ZSH_PATH=$(which zsh)
@@ -53,12 +58,12 @@ if [[ $ZSH_PATH =~ "sbin" ]]; then
 fi
 
 chsh -s $ZSH_PATH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sh -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 echo
 echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
 echo
 
-PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
+zsh
+zinit self-update
+zsh

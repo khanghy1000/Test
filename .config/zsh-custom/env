@@ -15,6 +15,7 @@ addToPathFront() {
 
 # Custom environment variables
 export REPO=$HOME/repos
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Custom paths
 addToPathFront $HOME/.local/scripts
