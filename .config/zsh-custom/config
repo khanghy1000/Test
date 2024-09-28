@@ -4,5 +4,8 @@ source $ZSH_CONFIG/alias
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 bindkey -s '^f' "^Qtmux-sessionizer\n"
 

@@ -15,7 +15,7 @@ echo
 echo -e "${GREEN}Installing packages...${ENDCOLOR}"
 echo
 
-pkgs=(zsh curl git make zip unzip gcc ripgrep base-devel tmux fzf openssh openssh-client openssh-server tree neovim firefox)
+pkgs=(zsh curl git make zip unzip gcc ripgrep base-devel tmux fzf openssh openssh-client openssh-server bat tree neovim firefox)
 
 # apt
 if command -v apt-get >/dev/null 2>&1; then
