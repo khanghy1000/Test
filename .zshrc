@@ -23,14 +23,6 @@ zinit light-mode for \
 
 #########################################################
 
-# Setup custom configs
-ZSH_CONFIG=$HOME/.config/zsh-custom
-source $ZSH_CONFIG/env
-source $ZSH_CONFIG/alias
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # Load libs and plugins
 zinit snippet OMZL::functions.zsh
 zinit snippet OMZL::history.zsh
@@ -43,6 +35,14 @@ zinit snippet OMZP::nvm
 zinit light zsh-users/zsh-completions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+
+# Setup custom configs
+ZSH_CONFIG=$HOME/.config/zsh-custom
+source $ZSH_CONFIG/env
+source $ZSH_CONFIG/alias
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # Initialize completions
 autoload -Uz compinit && compinit
