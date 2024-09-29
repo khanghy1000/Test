@@ -3,6 +3,9 @@ ZSH_CONFIG=$HOME/.config/zsh-custom
 source $ZSH_CONFIG/env
 source $ZSH_CONFIG/alias
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -33,15 +36,15 @@ zi snippet OMZL::key-bindings.zsh
 zi snippet OMZL::termsupport.zsh
 zi snippet OMZL::clipboard.zsh
 zi snippet OMZL::completion.zsh
-
 zi snippet OMZP::nvm
+
+zinit light zsh-users/zsh-completions
+
+autoload compinit
+compinit
 
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
 
 eval "$(starship init zsh)"
 
