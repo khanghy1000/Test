@@ -61,5 +61,11 @@ chsh -s $ZSH_PATH
 sh -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 zsh -c "source $HOME/.zshrc; zinit self-update"
-echo -e "${GREEN}Restart your shell (run zsh command)!${ENDCOLOR}"
 
+echo
+echo "----------------------------------------"
+echo
+echo -e "${GREEN}Restart your terminal to apply changes!${ENDCOLOR}"
+echo
+echo "----------------------------------------"
+echo
