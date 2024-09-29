@@ -1,11 +1,3 @@
-ZSH_CONFIG=$HOME/.config/zsh-custom
-source $ZSH_CONFIG/env
-source $ZSH_CONFIG/alias
-source $ZSH_CONFIG/keybind
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -24,6 +16,15 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # initialize completion
 autoload -Uz compinit && compinit
 _comp_options+=(globdots) # With hidden files
+
+# Setup custom configs
+ZSH_CONFIG=$HOME/.config/zsh-custom
+source $ZSH_CONFIG/env
+source $ZSH_CONFIG/alias
+source $ZSH_CONFIG/keybind
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
