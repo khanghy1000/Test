@@ -29,6 +29,8 @@ zi snippet OMZL::termsupport.zsh
 zi snippet OMZL::clipboard.zsh
 zi snippet OMZL::completion.zsh
 
+zi snippet OMZP::nvm
+
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
@@ -40,10 +42,6 @@ source <(fzf --zsh)
 ZSH_CONFIG=$HOME/.config/zsh-custom
 source $ZSH_CONFIG/env
 source $ZSH_CONFIG/alias
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
 
