@@ -21,12 +21,18 @@ pkgs=(zsh curl git make zip unzip gcc ripgrep base-devel tmux fzf openssh openss
 if command -v apt-get >/dev/null 2>&1; then
     sudo apt-get update
     sudo apt-get upgrade -y
-    sudo apt-get -y --ignore-missing install "${pkgs[@]}"
+
+    for pkg in "${pkgs[@]}"; do
+        sudo apt-get -y --ignore-missing install "$pkg"
+    done
 
 # pacman
 elif command -v pacman >/dev/null 2>&1; then
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm --needed "${pkgs[@]}"
+
+    for pkg in "${pkgs[@]}"; do
+        sudo pacman -S --needed --noconfirm "$pkg"
+    done
 
     if ! command -v yay >/dev/null 2>&1; then
         echo -e "${GREEN}Installing yay...${ENDCOLOR}"
