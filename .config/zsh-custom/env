@@ -20,3 +20,6 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Custom paths
 addToPathFront $HOME/.local/scripts
+
+# Key bindings
+bindkey -s '^f' "^Qtmux-sessionizer\n"
