@@ -39,12 +39,10 @@ zi snippet OMZL::completion.zsh
 zi snippet OMZP::nvm
 
 zinit light zsh-users/zsh-completions
-
-autoload compinit
-compinit
-
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+
+autoload -Uz compinit && compinit
 
 eval "$(starship init zsh)"
 
