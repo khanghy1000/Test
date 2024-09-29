@@ -37,6 +37,16 @@ elif command -v pacman >/dev/null 2>&1; then
 fi
 
 echo
+echo -e "${GREEN}Installing JetBrainsMono Nerd Font...${ENDCOLOR}"
+echo
+
+mkdir -p ~/.local/share/fonts
+curl -L -o ~/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+unzip ~/JetBrainsMono.zip -d ~/.local/share/fonts
+rm ~/JetBrainsMono.zip
+fc-cache -fv
+
+echo
 echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
 echo
 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
