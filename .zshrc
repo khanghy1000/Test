@@ -26,6 +26,7 @@ zi snippet OMZL::functions.zsh
 zi snippet OMZL::history.zsh
 zi snippet OMZL::key-bindings.zsh
 zi snippet OMZL::termsupport.zsh
+zi snippet OMZL::clipboard.zsh
 zi snippet OMZL::completion.zsh
 
 zinit light zdharma-continuum/fast-syntax-highlighting
