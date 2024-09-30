@@ -63,7 +63,7 @@ echo
 curl -sS https://starship.rs/install.sh | sh
 
 echo
-echo -e "${GREEN}Installing zinit and zsh plugins...${ENDCOLOR}"
+echo -e "${GREEN}Setting up zsh...${ENDCOLOR}"
 echo
 
 ZSH_PATH=$(which zsh)
@@ -73,10 +73,7 @@ if [[ $ZSH_PATH =~ "sbin" ]]; then
     echo -e "${YELLOW}warning:${ENDCOLOR} zsh path includes 'sbin'. Trying to change shell to $ZSH_PATH..."
 fi
 
-chsh -s $ZSH_PATH
-sh -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
-
-zsh -c "source $HOME/.zshrc; zinit self-update"
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 echo
 echo "----------------------------------------"
