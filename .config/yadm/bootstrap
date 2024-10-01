@@ -73,6 +73,7 @@ if [[ $ZSH_PATH =~ "sbin" ]]; then
     echo -e "${YELLOW}warning:${ENDCOLOR} zsh path includes 'sbin'. Trying to change shell to $ZSH_PATH..."
 fi
 
+chsh -s $ZSH_PATH
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 echo
