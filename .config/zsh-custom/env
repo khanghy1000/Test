@@ -16,6 +16,7 @@ addToPathFront() {
 # Custom environment variables
 export LANG=en_US.UTF-8
 export GIT_EDITOR=nvim
+export XDG_CONFIG_HOME=$HOME/.config
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Custom paths
