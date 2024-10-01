@@ -31,10 +31,29 @@ config.colors = {
 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 }
 
+config.keys = {
+  { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+}
+
 -- Platform-specific configs
 -- Windows
-if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' or wezterm.target_triple == 'x86_64-pc-windows-gnu' then
 	config.default_prog = { 'C:/msys64/msys2_shell.cmd', '-defterm', '-here', '-no-start', '-mingw64', '-shell', 'zsh' }
+
+	config.launch_menu = {
+		{
+			label = 'zsh',
+			args = { 'C:/msys64/msys2_shell.cmd', '-defterm', '-here', '-no-start', '-mingw64', '-shell', 'zsh' }
+		},
+		{
+    			label = 'PowerShell',
+    			args = { 'pwsh.exe', '-NoLogo' },
+    		},
+		{
+			label = 'cmd',
+			args = { 'cmd.exe' }
+		}
+	}
 end
 
 -- Linux
