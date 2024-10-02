@@ -72,3 +72,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+local function trim()
+  local save = vim.fn.winsaveview()
+  vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+  vim.fn.winrestview(save)
+end
+
+-- remove \r
+vim.api.nvim_set_keymap("n", "<leader>fp", '', {
+  callback = function()
+    local save = vim.fn.winsaveview()
+    vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+    vim.fn.winrestview(save)
+  end
+})
+
