@@ -22,7 +22,7 @@ venv() {
     source ./.venv/Scripts/activate
 }
 
-repof() {
+ff() {
     dirs=($HOME/repos $HOME/projects)
     selected=$(find "${dirs[@]}" -mindepth 1 -maxdepth 1 -type d | fzf)
 
