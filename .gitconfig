@@ -9,4 +9,4 @@
 	rebase = false
 [core]
 	eol = lf
-	autocrlf = false
+	autocrlf = input
