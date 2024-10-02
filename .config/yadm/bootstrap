@@ -57,6 +57,11 @@ echo -e "${GREEN}Installing nvm...${ENDCOLOR}"
 echo
 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
 
+
+echo
+echo -e "${GREEN}Installing tpm...${ENDCOLOR}"
+echo
+
 echo
 echo -e "${GREEN}Installing starship...${ENDCOLOR}"
 echo
