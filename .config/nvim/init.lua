@@ -64,6 +64,8 @@ vim.keymap.set("v", "p", "p`]")
 
 vim.keymap.set("v", "y", "y`]")
 
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
