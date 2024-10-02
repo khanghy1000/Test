@@ -61,6 +61,7 @@ PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm
 echo
 echo -e "${GREEN}Installing tpm...${ENDCOLOR}"
 echo
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo
 echo -e "${GREEN}Installing starship...${ENDCOLOR}"
