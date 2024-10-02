@@ -1,27 +1,5 @@
 #!/usr/bin/env zsh
 
-# Custom functions
-addToPath() {
-    if [[ "$PATH" != *"$1"* ]]; then
-        export PATH=$PATH:$1
-    fi
-}
-
-addToPathFront() {
-    if [[ "$PATH" != *"$1"* ]]; then
-        export PATH=$1:$PATH
-    fi
-}
-
-venv() {
-    if [[ ! -f ./.venv/Scripts/activate ]]; then
-        echo "venv script not found. Use 'python -m venv .venv' to create new virtual environment!"
-	exit 1
-    fi
-
-    source ./.venv/Scripts/activate
-}
-
 # Custom environment variables
 export LANG=en_US.UTF-8
 export GIT_EDITOR=nvim
@@ -32,4 +10,5 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 addToPathFront $HOME/.local/scripts
 
 # Key bindings
-bindkey -s '^f' "^Qtmux-sessionizer\n"
+zle -N tmux-sessionizer
+bindkey '^f' tmux-sessionizer
