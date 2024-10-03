@@ -65,6 +65,12 @@ return {
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
+
+      triggers = {
+        { '<auto>', mode = 'nisotc' },
+        { '<leader>', mode = { 'v' } },
+        { 'g', mode = { 'v' } },
+      },
     },
   },
 }
