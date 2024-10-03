@@ -104,7 +104,8 @@ return {
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-
+          -- Restart LSP
+          map('<leader>lr', '<cmd>LspRestart<CR>', 'Restart LSP')
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -194,6 +195,12 @@ return {
             },
           },
         },
+        ts_ls = {},
+        tailwindcss = {},
+        html = {},
+        cssls = {},
+        emmet_language_server = {},
+        eslint = {},
       }
 
       -- Ensure the servers and tools above are installed
