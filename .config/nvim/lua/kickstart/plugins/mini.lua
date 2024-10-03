@@ -35,6 +35,7 @@ return {
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
 
+      -- MiniFiles
       require('mini.files').setup {
         mappings = {
           synchronize = 'w',
@@ -43,6 +44,19 @@ return {
 
       local show_dotfiles = true
       vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open MiniFiles' })
+
+      -- MiniComment
+      require('mini.comment').setup {
+        options = {
+          custom_commentstring = function()
+            return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+          end,
+        },
+        mappings = {
+          comment_line = '<leader>/',
+          comment_visual = '<leader>/',
+        },
+      }
     end,
   },
 }
