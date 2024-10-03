@@ -41,6 +41,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+  callback = function()
+    if vim.fn.argv(0) == '.' or vim.fn.argv(0) == '' then
+      vim.cmd 'Neotree reveal'
+      vim.cmd 'TmuxNavigateRight'
+    end
+  end,
+})
+
 vim.keymap.set('n', '<leader>bd', utils.bufremove, { desc = 'Delete Buffer' })
 vim.keymap.set('n', '<leader>nl', '<cmd>set ff=unix<CR>', { desc = 'Change EOL to unix' })
 
