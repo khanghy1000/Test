@@ -31,6 +31,13 @@ config.colors = {
 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 }
 
+config.window_padding = {
+  left = '1cell',
+  right = '1cell',
+  top = '0cell',
+  bottom = '0cell',
+}
+
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
 }
