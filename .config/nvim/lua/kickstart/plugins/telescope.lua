@@ -61,7 +61,22 @@ return {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            file_ignore_patterns = {
+              'node_modules',
+              'target',
+              'dist',
+              'build',
+              -- ignore .git directory only
+              '.git\\',
+              '.git/',
+              '.venv',
+              '.svelte%-kit',
+            },
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),

@@ -7,6 +7,10 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Set EOL
+vim.opt.fileformat = 'unix'
+vim.opt.fileformats = 'unix,dos'
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 

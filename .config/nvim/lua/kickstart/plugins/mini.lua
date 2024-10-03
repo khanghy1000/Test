@@ -34,6 +34,15 @@ return {
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+
+      require('mini.files').setup {
+        mappings = {
+          synchronize = 'w',
+        },
+      }
+
+      local show_dotfiles = true
+      vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open MiniFiles' })
     end,
   },
 }

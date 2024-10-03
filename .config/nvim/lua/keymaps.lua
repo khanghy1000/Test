@@ -1,3 +1,5 @@
+local utils = require 'custom.utils'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -15,12 +17,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -45,49 +41,44 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
----@param buf number?
-function bufremove(buf)
-  buf = buf or 0
-  buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
+vim.keymap.set('n', '<leader>bd', utils.bufremove, { desc = 'Delete Buffer' })
+vim.keymap.set('n', '<leader>nl', '<cmd>set ff=unix<CR>', { desc = 'Change EOL to unix' })
 
-  if vim.bo.modified then
-    local choice = vim.fn.confirm(('Save changes to %q?'):format(vim.fn.bufname()), '&Yes\n&No\n&Cancel')
-    if choice == 0 or choice == 3 then -- 0 for <Esc>/<C-c> and 3 for Cancel
-      return
-    end
-    if choice == 1 then -- Yes
-      vim.cmd.write()
-    end
-  end
+-- disable marcos
+vim.keymap.set('n', 'q', '')
+vim.keymap.set('v', 'q', '')
 
-  for _, win in ipairs(vim.fn.win_findbuf(buf)) do
-    vim.api.nvim_win_call(win, function()
-      if not vim.api.nvim_win_is_valid(win) or vim.api.nvim_win_get_buf(win) ~= buf then
-        return
-      end
-      -- Try using alternate buffer
-      local alt = vim.fn.bufnr '#'
-      if alt ~= buf and vim.fn.buflisted(alt) == 1 then
-        vim.api.nvim_win_set_buf(win, alt)
-        return
-      end
+-- del without yank
+vim.keymap.set('n', 'D', '')
+vim.keymap.set('v', 'D', '')
+vim.keymap.set('n', 'D', '"_dd')
+vim.keymap.set('v', 'D', '"_d')
 
-      -- Try using previous buffer
-      local has_previous = pcall(vim.cmd, 'bprevious')
-      if has_previous and buf ~= vim.api.nvim_win_get_buf(win) then
-        return
-      end
+-- yank/paste then move cursor to last pasted line
+vim.keymap.set('n', 'p', 'p`]')
+vim.keymap.set('v', 'p', 'p`]')
+vim.keymap.set('v', 'y', 'y`]')
 
-      -- Create new listed buffer
-      local new_buf = vim.api.nvim_create_buf(true, false)
-      vim.api.nvim_win_set_buf(win, new_buf)
-    end)
-  end
-  if vim.api.nvim_buf_is_valid(buf) then
-    pcall(vim.cmd, 'bdelete! ' .. buf)
-  end
-end
+-- move half page then center screen
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
-vim.keymap.set('n', '<leader>bd', bufremove, { desc = 'Delete Buffer' })
+-- jump between paragraphs then center screen
+vim.keymap.set('n', '{', '{zz')
+vim.keymap.set('n', '}', '}zz')
+
+-- jump between search then center screen
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- replace without replace paste register
+vim.keymap.set('x', '<leader>p', [["_dP]])
+
+-- <Esc> binding
+vim.keymap.set('i', '<C-c>', '<Esc>')
+vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
+
+-- run tmux sessionizer
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 
 -- vim: ts=2 sts=2 sw=2 et
