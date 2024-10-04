@@ -51,7 +51,6 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
 })
 
 vim.keymap.set('n', '<leader>bd', utils.bufremove, { desc = 'Delete Buffer' })
-vim.keymap.set('n', '<leader>nl', '<cmd>set ff=unix<CR>', { desc = 'Change EOL to unix' })
 
 -- disable marcos
 vim.keymap.set('n', 'q', '')
