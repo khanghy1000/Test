@@ -13,7 +13,7 @@ return {
       vim.print('"' .. rel_buf_name .. '"' .. ' added to Harpoon')
     end, { desc = '[Add] file to Harpoon' })
 
-    vim.keymap.set('n', '<leader>h', function()
+    vim.keymap.set('n', '<C-e>', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = 'Toggle Harpoon window' })
   end,
