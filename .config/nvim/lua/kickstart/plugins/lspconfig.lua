@@ -201,6 +201,7 @@ return {
         cssls = {},
         emmet_language_server = {},
         eslint = {},
+        pyright = {},
       }
 
       -- Ensure the servers and tools above are installed
