@@ -40,6 +40,7 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Custom paths
 addToPathFront $HOME/.local/scripts
+addToPath /opt/nvim-linux64/bin
 
 # Key bindings
 bindkey -s '^f' "^Qts\n"
