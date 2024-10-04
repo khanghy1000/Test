@@ -76,6 +76,9 @@ return {
             },
             hidden = true,
           },
+          colorscheme = {
+            enable_preview = true,
+          },
         },
         extensions = {
           ['ui-select'] = {
