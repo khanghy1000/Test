@@ -64,8 +64,7 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Fix shell commands on Windows
---
+-- Fix shell commands on MSYS2
 local os_name = require('custom.utils').get_os_name()
 if os_name == 'Windows' then
   vim.opt.shelltemp = false
