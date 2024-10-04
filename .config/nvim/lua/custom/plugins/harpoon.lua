@@ -10,7 +10,7 @@ return {
       harpoon:list():add()
       local buf_name = vim.api.nvim_buf_get_name(0)
       local rel_buf_name = vim.fn.fnamemodify(buf_name, ':.')
-      vim.print(rel_buf_name .. ' added to Harpoon')
+      vim.print('"' .. rel_buf_name .. '"' .. ' added to Harpoon')
     end, { desc = '[Add] file to Harpoon' })
 
     vim.keymap.set('n', '<leader>h', function()
