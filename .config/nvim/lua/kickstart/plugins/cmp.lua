@@ -179,21 +179,18 @@ return {
             kind.kind = ' ' .. (strings[1] or '') .. ' '
             kind.menu = '    (' .. (strings[2] or '') .. ')'
             vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = '#C792EA', bg = 'NONE' })
-            -- vim.api.nvim_set_hl(0, 'Pmenu', { bg = '#151515' })
             return kind
           end,
         },
 
         window = {
           completion = {
-            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
             col_offset = -3,
             side_padding = 0,
-            border = 'rounded',
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
           },
           documentation = {
-            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
-            border = 'rounded',
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
           },
         },
       }

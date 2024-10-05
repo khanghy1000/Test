@@ -29,6 +29,12 @@ return {
     priority = 1000,
     opts = {
       transparent_background = true,
+      custom_highlights = function(colors)
+        return {
+          CmpItemAbbrMatch = { style = {} },
+          CmpItemAbbrMatchFuzzy = { style = {} },
+        }
+      end,
     },
     init = function()
       vim.cmd.colorscheme 'catppuccin-macchiato'
