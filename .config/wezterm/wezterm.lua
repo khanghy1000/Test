@@ -16,7 +16,7 @@ config.cell_width = 0.9
 
 config.enable_tab_bar = false
 -- config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.92
 config.window_close_confirmation = 'NeverPrompt'
 
 config.colors = {
