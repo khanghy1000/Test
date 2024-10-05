@@ -218,7 +218,15 @@ return {
         cssls = {},
         emmet_language_server = {},
         eslint = {},
-        pyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = 'standard',
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
