@@ -33,6 +33,7 @@ return {
         return {
           CmpItemAbbrMatch = { style = {} },
           CmpItemAbbrMatchFuzzy = { style = {} },
+          -- PmenuSel = { style = {} },
         }
       end,
     },
