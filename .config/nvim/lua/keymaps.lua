@@ -54,18 +54,18 @@ vim.keymap.set('n', '<leader>bd', utils.bufremove, { desc = 'Delete Buffer' })
 
 -- disable marcos
 vim.keymap.set('n', 'q', '')
-vim.keymap.set('v', 'q', '')
+vim.keymap.set('x', 'q', '')
 
 -- del without yank
 vim.keymap.set('n', 'D', '')
-vim.keymap.set('v', 'D', '')
+vim.keymap.set('x', 'D', '')
 vim.keymap.set('n', 'D', '"_dd')
-vim.keymap.set('v', 'D', '"_d')
+vim.keymap.set('x', 'D', '"_d')
 
 -- yank/paste then move cursor to last pasted line
 vim.keymap.set('n', 'p', 'p`]')
-vim.keymap.set('v', 'p', 'p`]')
-vim.keymap.set('v', 'y', 'y`]')
+vim.keymap.set('x', 'p', 'p`]')
+vim.keymap.set('x', 'y', 'y`]')
 
 -- move half page then center screen
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
