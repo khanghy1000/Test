@@ -22,6 +22,15 @@ return {
           {
             'rafamadriz/friendly-snippets',
             config = function()
+              -- extend filetype for snippets here
+              local extends = {
+                ['javascript'] = { 'jsdoc' },
+              }
+
+              for k, v in pairs(extends) do
+                require('luasnip').filetype_extend(k, v)
+              end
+
               require('luasnip.loaders.from_vscode').lazy_load()
             end,
           },
@@ -155,22 +164,30 @@ return {
             },
           },
         },
+
         formatting = {
-          format = lspkind.cmp_format {
-            mode = 'symbol_text',
-            maxwidth = 50,
-            ellipsis_char = '...',
-            show_labelDetails = true,
-            menu = {
-              copilot = '[Copilot]',
-              lazydev = '[LazyDev]',
-              nvim_lsp = '[LSP]',
-              luasnip = '[LuaSnip]',
-              buffer = '[Buffer]',
-              nvim_lua = '[Lua]',
-              latex_symbols = '[Latex]',
-            },
-            symbol_map = { Copilot = '' },
+          fields = { 'kind', 'abbr', 'menu' },
+          format = function(entry, vim_item)
+            local kind = require('lspkind').cmp_format {
+              mode = 'symbol_text',
+              maxwidth = 50,
+              ellipsis_char = '...',
+              show_labelDetails = true,
+              symbol_map = { Copilot = '' },
+            }(entry, vim_item)
+            local strings = vim.split(kind.kind, '%s', { trimempty = true })
+            kind.kind = ' ' .. (strings[1] or '') .. ' '
+            kind.menu = '    (' .. (strings[2] or '') .. ')'
+            vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = '#C792EA', bg = 'NONE' })
+            return kind
+          end,
+        },
+
+        window = {
+          completion = {
+            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+            col_offset = -3,
+            side_padding = 0,
           },
         },
       }
