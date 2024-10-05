@@ -81,7 +81,7 @@ return {
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
+          ['<C-Space>'] = cmp.mapping.complete(),
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
@@ -120,6 +120,7 @@ return {
         },
 
         sources = {
+          { name = 'copilot' },
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
@@ -145,6 +146,7 @@ return {
             ellipsis_char = '...',
             show_labelDetails = true,
             menu = {
+              copilot = '[Copilot]',
               lazydev = '[LazyDev]',
               nvim_lsp = '[LSP]',
               luasnip = '[LuaSnip]',
@@ -152,6 +154,7 @@ return {
               nvim_lua = '[Lua]',
               latex_symbols = '[Latex]',
             },
+            symbol_map = { Copilot = '' },
           },
         },
       }

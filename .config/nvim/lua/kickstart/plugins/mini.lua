@@ -40,6 +40,10 @@ return {
         mappings = {
           synchronize = 'w',
         },
+
+        options = {
+          use_as_default_explorer = false,
+        },
       }
 
       local show_dotfiles = true
