@@ -196,22 +196,22 @@ return {
             },
           },
         },
-        ts_ls = {
-          settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              },
-            },
-          },
-        },
+        -- ts_ls = {
+        --   settings = {
+        --     typescript = {
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --       },
+        --     },
+        --     javascript = {
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --       },
+        --     },
+        --   },
+        -- },
 
         tailwindcss = {},
         html = {},

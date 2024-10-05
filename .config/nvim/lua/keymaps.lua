@@ -86,6 +86,10 @@ vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
 
+-- Move code block up and down
+vim.keymap.set('x', '<M-j>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('x', '<M-k>', ":m '<-2<CR>gv=gv")
+
 -- run tmux sessionizer
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 
