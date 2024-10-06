@@ -9,3 +9,4 @@ ZSH_CONFIG=$HOME/.config/zsh-custom
 source $ZSH_CONFIG/env
 source $ZSH_CONFIG/alias
 
+source $HOME/.local/scripts/wezterm.sh
