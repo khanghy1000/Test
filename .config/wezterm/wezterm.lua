@@ -48,8 +48,8 @@ config.keys = {
   },
 
   {
-    key = 'N',
-    mods = 'CTRL',
+    key = 'n',
+    mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
 
