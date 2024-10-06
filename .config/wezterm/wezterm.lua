@@ -41,6 +41,18 @@ config.window_padding = {
 config.keys = {
   { key = 'l', mods = 'CTRL|ALT', action = wezterm.action.ShowLauncher },
 
+  {
+    key = 'n',
+    mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+
+  {
+    key = 'N',
+    mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+
   -- Ctrl + Space workaround
   {
     key = ' ',

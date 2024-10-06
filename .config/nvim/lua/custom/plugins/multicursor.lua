@@ -6,27 +6,13 @@ return {
     local set = vim.keymap.set
     mc.setup()
 
-    -- Add or skip cursor above/below the main cursor.
-    set({ 'n', 'v' }, '<up>', function()
-      mc.lineAddCursor(-1)
-    end, { desc = 'Add cursor above' })
-    set({ 'n', 'v' }, '<down>', function()
-      mc.lineAddCursor(1)
-    end, { desc = 'Add cursor below' })
-    set({ 'n', 'v' }, '<leader><up>', function()
-      mc.lineSkipCursor(-1)
-    end, { desc = 'Skip cursor above' })
-    set({ 'n', 'v' }, '<leader><down>', function()
-      mc.lineSkipCursor(1)
-    end, { desc = 'Skip cursor below' })
-
     -- Add or skip adding a new cursor by matching word/selection
     set({ 'n', 'v' }, '<leader>n', function()
       mc.matchAddCursor(1)
-    end, { desc = 'Add cursor to next word by matching word/selection' })
+    end, { desc = '[N] Add cursor to next word by matching word/selection' })
     set({ 'n', 'v' }, '<leader>j', function()
       mc.matchSkipCursor(1)
-    end, { desc = 'Skip cursor to next word by matching word/selection' })
+    end, { desc = '[J] Skip cursor to next word by matching word/selection' })
 
     -- Add and remove cursors with control + left click.
     set('n', '<c-leftmouse>', mc.handleMouse)
@@ -41,6 +27,13 @@ return {
       end
     end, { desc = 'Clear cursors' })
 
+    -- Append/insert for each line of visual selections.
+    set('v', 'I', mc.insertVisual, { desc = 'Insert cursor for each line of visual selections' })
+    set('v', 'A', mc.appendVisual, { desc = 'Append cursor for each line of visual selections' })
+
+    -- match new cursors within visual selections by regex.
+    set('v', 'M', mc.matchCursors, { desc = 'Match cursors within visual selections' })
+
     -- Easy way to add and remove cursors using the main cursor.
     set({ 'n', 'v' }, '<leader>mt', mc.toggleCursor, { desc = '[T]oggle cursors' })
 
@@ -52,13 +45,6 @@ return {
 
     -- Delete the main cursor.
     set({ 'n', 'v' }, '<leader>md', mc.deleteCursor, { desc = '[D]elete cursor' })
-
-    -- Append/insert for each line of visual selections.
-    set('v', 'I', mc.insertVisual, { desc = 'Insert cursor for each line of visual selections' })
-    set('v', 'A', mc.appendVisual, { desc = 'Append cursor for each line of visual selections' })
-
-    -- match new cursors within visual selections by regex.
-    set('v', 'M', mc.matchCursors, { desc = 'Match cursors within visual selections' })
 
     -- Customize how cursors look.
     local hl = vim.api.nvim_set_hl

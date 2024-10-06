@@ -47,7 +47,7 @@ return {
       }
 
       local show_dotfiles = true
-      vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open MiniFiles' })
+      vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = '[E] Open MiniFiles' })
 
       -- MiniComment
       require('mini.comment').setup {

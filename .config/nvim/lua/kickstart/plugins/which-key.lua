@@ -67,6 +67,7 @@ return {
         { '<leader>b', group = '[B]uffer' },
         { '<leader>l', group = '[L]SP' },
         { '<leader>q', group = '[Q]uickfix' },
+        { '<leader>f', group = '[F]ormat' },
         { '<leader>m', group = '[M]ulticursor' },
       },
 
