@@ -66,6 +66,8 @@ return {
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>b', group = '[B]uffer' },
         { '<leader>l', group = '[L]SP' },
+        { '<leader>q', group = '[Q]uickfix' },
+        { '<leader>m', group = '[M]ulticursor' },
       },
 
       triggers = {
