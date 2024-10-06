@@ -42,13 +42,7 @@ config.keys = {
   { key = 'l', mods = 'CTRL|ALT', action = wezterm.action.ShowLauncher },
 
   {
-    key = 'n',
-    mods = 'CTRL',
-    action = wezterm.action.DisableDefaultAssignment,
-  },
-
-  {
-    key = 'n',
+    key = 'm',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
