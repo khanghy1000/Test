@@ -11,7 +11,6 @@ local config = wezterm.config_builder()
 config.font = wezterm.font('JetBrainsMono NF', { weight = 'Medium', italic = false })
 config.font_size = 9.5
 config.freetype_load_target = 'Light'
-config.freetype_render_target = 'HorizontalLcd'
 config.cell_width = 0.9
 
 config.enable_tab_bar = false
