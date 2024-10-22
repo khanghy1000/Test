@@ -37,6 +37,7 @@ export EDITOR=nvim
 export GIT_EDITOR=nvim
 export XDG_CONFIG_HOME=$HOME/.config
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="psql *"
 
 # Custom paths
 addToPathFront $HOME/.local/scripts
