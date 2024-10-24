@@ -14,11 +14,18 @@ addToPathFront() {
 }
 
 venv() {
-    if [[ ! -f ./.venv/Scripts/activate ]]; then
-        echo "venv script not found. Use 'python -m venv .venv' to create new virtual environment!"
-    else
-        source ./.venv/Scripts/activate
+    if ! command -v python >/dev/null 2>&1; then
+        if ! command -v python3 >/dev/null 2>&1; then
+            echo "Python not found."
+            return
+        fi
     fi
+
+    if [[ ! -f ./.venv/Scripts/activate ]]; then
+        python -m venv .venv
+        echo "Virtual environment created in .venv"
+    fi
+    source ./.venv/Scripts/activate
 }
 
 ff() {
