@@ -43,12 +43,22 @@ ff() {
     cd $selected
 }
 
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Custom environment variables
 export EDITOR=nvim
 export GIT_EDITOR=nvim
 export XDG_CONFIG_HOME=$HOME/.config
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="psql *"
+export YAZI_CONFIG_HOME=$XDG_CONFIG_HOME/yazi
 
 # Custom paths
 addToPathFront $HOME/.local/scripts
@@ -56,3 +66,4 @@ addToPath /opt/nvim-linux64/bin
 
 # Key bindings
 bindkey -s '^f' "^Qts\n"
+
