@@ -66,8 +66,8 @@ addToPathFront $HOME/.local/scripts
 addToPath /opt/nvim-linux64/bin
 
 # Key bindings
-bindkey -s '^f' "^Qts\n"
 bindkey -e
+bindkey -s '^f' "^Qts\n"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[OA' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
