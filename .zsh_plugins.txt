@@ -3,6 +3,7 @@ zsh-users/zsh-completions
 
 zsh-users/zsh-autosuggestions
 zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search
 
 belak/zsh-utils path:editor
 belak/zsh-utils path:history
