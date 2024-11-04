@@ -40,7 +40,7 @@ ff() {
         return
     fi
 
-    z -- $selected
+    z -- "$selected"
 }
 
 y() {
